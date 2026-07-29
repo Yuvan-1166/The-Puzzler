@@ -1,0 +1,93 @@
+# =========================
+# Java
+# =========================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# =========================
+# Build directories
+# =========================
+target/
+build/
+out/
+bin/
+
+# Gradle
+.gradle/
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# IntelliJ IDEA
+# =========================
+.idea/
+*.iml
+
+# =========================
+# Eclipse
+# =========================
+.project
+.classpath
+.settings/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# NetBeans
+# =========================
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.swp
+*.swo
+*~
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+
+# =========================
+# Coverage & Reports
+# =========================
+coverage/
+jacoco.exec
+site/
+reports/
+
+# =========================
+# Test outputs
+# =========================
+test-output/
+
+# =========================
+# Misc
+# =========================
+hs_err_pid*
+replay_pid*
