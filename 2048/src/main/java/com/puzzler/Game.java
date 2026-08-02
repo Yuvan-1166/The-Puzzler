@@ -1,11 +1,14 @@
 package com.puzzler;
 
 import java.util.*;
+import com.google.gson.Gson;
+import com.puzzler.dto.InputDTO;
 import com.puzzler.board.Board;
 import com.puzzler.utils.Util;
 
 public class Game {
 
+  private static final Gson gson = new Gson();
   private Board board;
   Scanner scan;
 
@@ -15,12 +18,11 @@ public class Game {
   }
 
   public boolean gameLoop() {
-
     while(true) {
-      Util.clearScreen();
       System.out.println(board);
-      System.out.println("WASD - Direction\nq - quit\n");
-      char x = Character.toUpperCase(scan.next().charAt(0));
+      String input = scan.next();
+      InputDTO inputDTO = gson.fromJson(input, InputDTO.class);
+      char x = Character.toUpperCase(inputDTO.getMove());
       boolean breakLoop = false;
       if(!board.isMoveAvailable())
         return false;
@@ -37,11 +39,11 @@ public class Game {
         case 'D':
           board.rightMove();
           break;
+        case 'R':
+          board.init();
+          break;
         case 'Q':
           breakLoop = true;
-          break;
-        default:
-          System.out.println("Invalid Move");
           break;
       }
       if(breakLoop)
