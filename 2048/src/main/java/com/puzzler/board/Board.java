@@ -1,11 +1,14 @@
 package com.puzzler.board;
 
 import java.util.*;
+import com.google.gson.Gson;
+import com.puzzler.dto.BoardDTO;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {
 
   private static final int[][] directions = new int[][] {{1,0},{-1,0},{0,1},{0,-1}};
+  private static final Gson gson = new Gson();
   private int[][] board;
   private int[][] prevState;
   private int score;
@@ -149,11 +152,7 @@ public class Board {
   }
 
   public String toString() {
-    StringBuilder grid = new StringBuilder();
-    grid.append("2048\nScore: ").append(score).append('\n');
-    for(int[] row : board)
-      grid.append(Arrays.toString(row)).append("\n");
-    return grid.toString();
+    return gson.toJson(new BoardDTO(board, score));
   }
 
 }
