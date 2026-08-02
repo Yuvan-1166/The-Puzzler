@@ -11,6 +11,10 @@ public class Board {
   private int score;
 
   public Board () {
+    init();
+  }
+
+  public void init() {
     this.board = new int[4][4];
     this.prevState = new int[4][4];
     this.score = 0;
