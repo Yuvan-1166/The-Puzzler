@@ -19,13 +19,17 @@ public class Game {
 
   public boolean gameLoop() {
     while(true) {
+      if(!board.isMoveAvailable())
+        board.setIsGameOver();
+
       System.out.println(board);
-      String input = scan.next();
+
+      String input = scan.nextLine();
       InputDTO inputDTO = gson.fromJson(input, InputDTO.class);
+
       char x = Character.toUpperCase(inputDTO.getMove());
       boolean breakLoop = false;
-      if(!board.isMoveAvailable())
-        return false;
+
       switch(x) {
         case 'W':
           board.upMove();
@@ -43,11 +47,8 @@ public class Game {
           board.init();
           break;
         case 'Q':
-          breakLoop = true;
-          break;
+          return false;
       }
-      if(breakLoop)
-        break;
     }
 
     return true;
