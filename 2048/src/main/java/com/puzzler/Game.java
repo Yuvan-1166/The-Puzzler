@@ -47,8 +47,10 @@ public class Game {
           board.init();
           break;
         case 'Q':
-          return false;
+          breakLoop = true;
       }
+      if(breakLoop)
+        break;
     }
 
     return true;
