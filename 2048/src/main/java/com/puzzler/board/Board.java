@@ -12,6 +12,7 @@ public class Board {
   private int[][] board;
   private int[][] prevState;
   private int score;
+  private boolean isGameOver;
 
   public Board () {
     init();
@@ -21,6 +22,7 @@ public class Board {
     this.board = new int[4][4];
     this.prevState = new int[4][4];
     this.score = 0;
+    this.isGameOver = false;
     int[] pos1 = generateRandomPosition();
     int[] pos2 = generateRandomPosition();
 
@@ -29,6 +31,9 @@ public class Board {
 
     board[pos1[0]][pos1[1]] = ThreadLocalRandom.current().nextInt(10) == 0 ? 4 : 2;
     board[pos2[0]][pos2[1]] = ThreadLocalRandom.current().nextInt(10) == 0 ? 4 : 2;
+
+    prevState[pos1[0]][pos1[1]] = board[pos1[0]][pos1[1]];
+    prevState[pos2[0]][pos2[1]] = board[pos2[0]][pos2[1]];
   }
 
   private int[] generateRandomPosition() {
@@ -151,8 +156,12 @@ public class Board {
     spawnNext();
   }
 
+  public void setIsGameOver() {
+    this.isGameOver = true;
+  }
+
   public String toString() {
-    return gson.toJson(new BoardDTO(board, score));
+    return gson.toJson(new BoardDTO(board, score, isGameOver));
   }
 
 }
