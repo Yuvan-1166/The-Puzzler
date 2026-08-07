@@ -24,7 +24,7 @@ class DuelingDQN(nn.Module):
         self.adv_fc = nn.Linear(flattend_size, 512)
         self.adv_out = nn.Linear(512, 4)
 
-    def forward(x, self):
+    def forward(self, x):
         # Conv Layers
 
         x = F.relu(self.conv1(x))
